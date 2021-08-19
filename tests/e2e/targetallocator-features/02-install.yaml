@@ -17,6 +17,8 @@ spec:
       resources:
         requests:
           storage: 100Mi
+  targetAllocator:
+    enabled: true
   config: |
     receivers:
       jaeger:
@@ -42,3 +44,9 @@ spec:
           receivers: [jaeger]
           processors: []
           exporters: [logging]
+---
+apiVersion: kuttl.dev/v1beta1
+kind: TestStep
+commands:
+  - command: kubectl rollout status --watch statefulset/stateful-collector
+    timeout: 300
