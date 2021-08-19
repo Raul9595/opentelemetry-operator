@@ -36,4 +36,4 @@ apiVersion: kuttl.dev/v1beta1
 kind: TestStep
 commands:
   - command: kubectl rollout status --watch statefulset/stateful
-    timeout: 300s
+    timeout: 300
