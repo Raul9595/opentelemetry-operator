@@ -1,3 +1,7 @@
+apiVersion: kuttl.dev/v1beta1
+kind: TestAssert
+timeout: 150
+---
 apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
@@ -31,8 +35,3 @@ spec:
           receivers: [jaeger]
           processors: []
           exporters: [logging]
----
-apiVersion: kuttl.dev/v1beta1
-kind: TestStep
-commands:
-  - command: kubectl -n $NAMESPACE rollout status --watch --timeout=300s statefulset/stateful-collector
