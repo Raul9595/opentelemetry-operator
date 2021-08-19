@@ -36,5 +36,5 @@ spec:
 apiVersion: kuttl.dev/v1beta1
 kind: TestStep
 commands:
-  - command: kubectl rollout status --watch statefulset/stateful-collector
+  - command: kubectl -n $NAMESPACE rollout status --watch statefulset/stateful-collector
     timeout: 300
