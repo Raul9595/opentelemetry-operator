@@ -16,7 +16,7 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi
+          storage: 100Mi
   targetAllocator:
     enabled: true
   config: |
@@ -44,3 +44,9 @@ spec:
           receivers: [jaeger]
           processors: []
           exporters: [logging]
+---
+apiVersion: kuttl.dev/v1beta1
+kind: TestStep
+commands:
+  - command: kubectl rollout status --watch statefulset/stateful
+    timeout: 300s
